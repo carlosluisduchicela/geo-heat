@@ -42,17 +42,9 @@ body {
     radial-gradient(circle at 50% 50%, rgba(30, 90, 220, 0.85) 0 45%, rgba(30, 90, 220, 0) 78%),
     var(--lab);
 }
-.topbar h1 { margin: 0 0 2px; font-size: 30px; letter-spacing: -0.02em; }
-.tagline { margin: 0; color: var(--muted); max-width: 560px; font-size: 15px; }
-.how {
-  margin: 0;
-  font-size: 13.5px;
-  color: var(--muted);
-  max-width: 300px;
-  border-left: 3px solid var(--accent);
-  padding-left: 12px;
-}
-.how code { font-size: 12.5px; }
+.wordmark { margin: 0 0 2px; font-size: 14px; font-weight: 700; letter-spacing: 0.04em; }
+.topbar h1 { margin: 0 0 4px; font-size: 26px; letter-spacing: -0.02em; line-height: 1.2; }
+.tagline { margin: 0; color: var(--muted); max-width: 620px; font-size: 15px; }
 
 /* ---------------------------------------------------------- layout */
 
@@ -61,6 +53,7 @@ main {
   grid-template-columns: 300px 1fr;
   grid-template-areas:
     "scenes stage"
+    "own stage"
     "controls stage"
     "insights stage"
     "format format";
@@ -68,6 +61,7 @@ main {
   align-items: start;
 }
 .scenes { grid-area: scenes; }
+.own { grid-area: own; }
 .stage { grid-area: stage; }
 .controls { grid-area: controls; }
 .insights { grid-area: insights; }
@@ -118,10 +112,10 @@ button, .file-label, select {
 button:hover, .file-label:hover { border-color: var(--accent); color: var(--accent); }
 .file-label input[type="file"] { display: none; }
 
-.paste summary { cursor: pointer; font-size: 14px; }
+.sub-label { margin: 0 0 6px; font-size: 12.5px; font-weight: 600; color: var(--muted); }
 textarea {
   width: 100%;
-  margin: 10px 0;
+  margin: 0;
   padding: 10px;
   border: 1px solid var(--line);
   border-radius: 8px;
@@ -249,9 +243,8 @@ footer { margin-top: 28px; color: var(--muted); font-size: 13px; border-top: 1px
 @media (max-width: 860px) {
   main {
     grid-template-columns: 1fr;
-    grid-template-areas: "stage" "scenes" "controls" "insights" "format";
+    grid-template-areas: "stage" "scenes" "own" "controls" "insights" "format";
   }
-  .how { display: none; }
 }
 @media (max-width: 560px) {
   body { padding: 16px 12px 32px; }

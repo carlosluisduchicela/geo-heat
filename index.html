@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>geo-heat — the offline heatmap lab</title>
+<title>geo-heat — a list of coordinates in. a heatmap out.</title>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -11,38 +11,47 @@
   <div class="brand">
     <span class="logo" aria-hidden="true"></span>
     <div>
-      <h1>geo-heat</h1>
-      <p class="tagline">The offline heatmap lab. Points in, heat out — no tiles, no API key, no network. Everything renders on a canvas in your browser.</p>
+      <p class="wordmark">geo-heat</p>
+      <h1 id="headline">a list of coordinates in. a heatmap out.</h1>
+      <p class="tagline" id="promise">paste latitude/longitude points or a csv and see where things cluster — the densest spot gets ringed, the numbers sit next to the map. no map tiles, no upload; everything renders in your browser.</p>
     </div>
   </div>
-  <p class="how">Try it: pick a scene, drag the sliders, hover the map. Then paste your own <code>lat,lng</code> points.</p>
 </header>
 
 <main>
   <section class="panel scenes" aria-label="Scenes">
     <div class="panel-head">
-      <h2>Scenes</h2>
-      <span class="hint">fictional data, generated locally</span>
+      <h2>Load a scene</h2>
+      <span class="hint">sample scenes — made-up points, drawn in your browser</span>
     </div>
-    <div class="chips" role="group" aria-label="Preset scenes">
+    <div class="chips" id="sceneChips" role="group" aria-label="Preset scenes">
       <button type="button" class="chip is-active" data-scene="sample">Neighborhoods</button>
       <button type="button" class="chip" data-scene="delivery">Delivery rush</button>
       <button type="button" class="chip" data-scene="stadium">Stadium night</button>
       <button type="button" class="chip" data-scene="parks">Weekend parks</button>
     </div>
+    <div id="categoryRow" hidden>
+      <p class="sub-label">Filter by category</p>
+      <div class="chips" id="categoryChips" role="group" aria-label="Filter places by category"></div>
+    </div>
     <div class="row actions">
+      <button id="exportPng" type="button">Export PNG</button>
+    </div>
+    <p id="status" class="status" role="status"></p>
+  </section>
+
+  <section class="panel own" aria-label="Use your own">
+    <div class="panel-head">
+      <h2>Use your own</h2>
+    </div>
+    <textarea id="pasteBox" rows="6" spellcheck="false" placeholder="lat,lng,weight,label&#10;40.811,-73.946,3,cafe&#10;&#10;— or headerless, just pairs —&#10;40.811,-73.946"></textarea>
+    <div class="row actions">
+      <button id="loadPaste" type="button">Paste your own points</button>
       <label class="file-label">
         Upload CSV
         <input id="fileInput" type="file" accept=".csv,text/csv">
       </label>
-      <button id="exportPng" type="button">Export PNG</button>
     </div>
-    <details class="paste">
-      <summary>Paste points instead</summary>
-      <textarea id="pasteBox" rows="6" spellcheck="false" placeholder="lat,lng,weight,label&#10;40.811,-73.946,3,cafe&#10;&#10;— or headerless, just pairs —&#10;40.811,-73.946"></textarea>
-      <button id="loadPaste" type="button">Load pasted points</button>
-    </details>
-    <p id="status" class="status" role="status"></p>
   </section>
 
   <section class="stage">
@@ -61,7 +70,6 @@
   <section class="panel controls" aria-label="Controls">
     <div class="panel-head">
       <h2>Heat controls</h2>
-      <span class="hint">everything re-renders live</span>
     </div>
     <div class="slider-grid">
       <div class="slider-row">
@@ -90,6 +98,9 @@
       <label><input id="showMarkers" type="checkbox" checked> Show markers</label>
       <label><input id="showDensest" type="checkbox" checked> Ring the densest cluster</label>
     </div>
+    <div class="row actions">
+      <button id="resetControls" type="button">Reset</button>
+    </div>
   </section>
 
   <aside class="panel insights" aria-label="Insights">
@@ -100,7 +111,7 @@
     <div class="insight-grid">
       <div class="insight">
         <span class="insight-num" id="statCount">—</span>
-        <span class="insight-label">points on the map</span>
+        <span class="insight-label" id="statCountLabel">points on the map</span>
       </div>
       <div class="insight">
         <span class="insight-num" id="statDensest">—</span>
@@ -112,11 +123,12 @@
       </div>
       <div class="insight">
         <span class="insight-num" id="statHot">—</span>
-        <span class="insight-label">hottest label (by weight)</span>
+        <span class="insight-label" id="statHotLabel">hottest label (by weight)</span>
       </div>
     </div>
     <dl class="details-list">
       <dt>Densest cluster center</dt><dd id="statDensestCenter">—</dd>
+      <dt id="hoodDt" hidden>Densest neighborhood</dt><dd id="statNeighborhood" hidden>—</dd>
       <dt>Bounding box</dt><dd id="statBounds">—</dd>
       <dt>Area covered</dt><dd id="statSpan">—</dd>
       <dt>Top labels</dt><dd id="statLabels">—</dd>
@@ -133,9 +145,10 @@
 </main>
 
 <footer>
-  <p>MIT. Equirectangular projection — accurate at city scale, distorted at global scale. There is a Python CLI version too: it turns a CSV into a single standalone HTML file. See the README.</p>
+  <p>everything runs in your browser; nothing leaves the page.</p>
 </footer>
 
+<script src="places-data.js"></script>
 <script src="app.js"></script>
 </body>
 </html>

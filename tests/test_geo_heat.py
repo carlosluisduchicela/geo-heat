@@ -81,6 +81,89 @@ class TestGridDensity(unittest.TestCase):
         self.assertEqual(geo_heat.top_labels(points), [("cafe", 2), ("park", 1)])
 
 
+class TestSceneDefaults(unittest.TestCase):
+    def test_known_scenes_have_expected_defaults(self):
+        self.assertEqual(
+            geo_heat.scene_defaults("sample"),
+            {"radius": 36, "intensity": 100, "opacity": 90, "palette": "classic"},
+        )
+        self.assertEqual(geo_heat.scene_defaults("places")["radius"], 46)
+        self.assertEqual(geo_heat.scene_defaults("custom")["palette"], "classic")
+
+    def test_reset_state_is_a_fresh_copy(self):
+        defaults = geo_heat.scene_defaults("sample")
+        defaults["radius"] = 99
+        # Mutating the returned state must not leak into the next reset.
+        self.assertEqual(geo_heat.scene_defaults("sample")["radius"], 36)
+
+    def test_unknown_scene_raises(self):
+        with self.assertRaises(ValueError):
+            geo_heat.scene_defaults("nope")
+
+
+class TestPlaces(unittest.TestCase):
+    PLACES = [
+        {"n": "Cafe One", "lat": 40.8116, "lng": -73.9465, "c": "cafe"},
+        {"n": "Bar Two", "lat": 40.7265, "lng": -73.9815, "c": "bar"},
+        {"n": "Cafe Three", "lat": 40.8, "lng": -73.95, "c": "cafe"},
+        {"n": "No Coords", "lat": None, "lng": None, "c": "cafe"},
+        {"n": "Out Of Range", "lat": 999, "lng": 0, "c": "bar"},
+        {"n": "No Category", "lat": 40.7, "lng": -73.99, "c": ""},
+    ]
+
+    def test_places_to_points_skips_bad_records(self):
+        points = geo_heat.places_to_points(self.PLACES)
+        self.assertEqual(len(points), 4)
+        self.assertEqual(points[0]["name"], "Cafe One")
+        self.assertEqual(points[0]["label"], "cafe")  # category doubles as label
+        self.assertEqual(points[0]["category"], "cafe")
+        self.assertEqual(points[0]["weight"], 1.0)
+
+    def test_distinct_categories_ordered_by_count(self):
+        points = geo_heat.places_to_points(self.PLACES)
+        self.assertEqual(geo_heat.distinct_categories(points), ["cafe", "bar"])
+
+    def test_filter_by_category(self):
+        points = geo_heat.places_to_points(self.PLACES)
+        self.assertEqual(len(geo_heat.filter_by_category(points, "all")), 4)
+        cafes = geo_heat.filter_by_category(points, "cafe")
+        self.assertEqual([p["name"] for p in cafes], ["Cafe One", "Cafe Three"])
+        self.assertEqual(geo_heat.filter_by_category(points, "museum"), [])
+
+
+class TestNeighborhoodLabels(unittest.TestCase):
+    NYC_BOUNDS = (40.6, 40.9, -74.05, -73.7)  # min_lat, max_lat, min_lng, max_lng
+
+    def test_labels_in_view(self):
+        in_view = geo_heat.labels_in_view(geo_heat.NEIGHBORHOOD_LABELS, self.NYC_BOUNDS)
+        self.assertEqual(len(in_view), len(geo_heat.NEIGHBORHOOD_LABELS))
+        tight = geo_heat.labels_in_view(
+            geo_heat.NEIGHBORHOOD_LABELS, (40.80, 40.82, -73.96, -73.93)
+        )
+        self.assertEqual([name for name, _, _ in tight], ["Harlem"])
+
+    def test_label_projects_onto_canvas(self):
+        # Harlem's label, projected with the same projection the points use,
+        # must land inside a 960x600 canvas over an NYC-sized viewport.
+        name, lat, lng = geo_heat.NEIGHBORHOOD_LABELS[0]
+        self.assertEqual(name, "Harlem")
+        x, y = geo_heat.project(lat, lng, self.NYC_BOUNDS, 960, 600)
+        self.assertTrue(0 <= x <= 960)
+        self.assertTrue(0 <= y <= 600)
+
+    def test_nearest_label(self):
+        # A cluster centre in Harlem resolves to Harlem; one in Flushing
+        # resolves to Flushing.
+        self.assertEqual(
+            geo_heat.nearest_label(40.812, -73.947, geo_heat.NEIGHBORHOOD_LABELS),
+            "Harlem",
+        )
+        self.assertEqual(
+            geo_heat.nearest_label(40.767, -73.833, geo_heat.NEIGHBORHOOD_LABELS),
+            "Flushing",
+        )
+
+
 class TestRender(unittest.TestCase):
     def test_render_html_embeds_points_and_is_standalone(self):
         points = [{"lat": 40.0, "lng": -73.0, "weight": 2, "label": "cafe"}]

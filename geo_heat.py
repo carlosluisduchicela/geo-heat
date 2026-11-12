@@ -158,6 +158,126 @@ def top_labels(points: Sequence[Point], limit: int = 5) -> List[Tuple[str, int]]
 
 
 # --------------------------------------------------------------------------
+# Scene defaults (mirrors the web demo's per-scene control state)
+# --------------------------------------------------------------------------
+
+SCENE_DEFAULTS: Dict[str, Dict[str, object]] = {
+    "sample": {"radius": 36, "intensity": 100, "opacity": 90, "palette": "classic"},
+    "delivery": {"radius": 30, "intensity": 110, "opacity": 90, "palette": "classic"},
+    "stadium": {"radius": 28, "intensity": 120, "opacity": 90, "palette": "classic"},
+    "parks": {"radius": 42, "intensity": 100, "opacity": 90, "palette": "classic"},
+    "places": {"radius": 46, "intensity": 100, "opacity": 90, "palette": "classic"},
+    "custom": {"radius": 36, "intensity": 100, "opacity": 90, "palette": "classic"},
+}
+
+
+def scene_defaults(scene: str) -> Dict[str, object]:
+    """Return a fresh copy of a scene's default control state (for Reset)."""
+    if scene not in SCENE_DEFAULTS:
+        raise ValueError(f"unknown scene: {scene!r}")
+    return dict(SCENE_DEFAULTS[scene])
+
+
+# --------------------------------------------------------------------------
+# Saved places ("my places" mode — mirrors the web demo)
+# --------------------------------------------------------------------------
+
+# (name, lat, lng) — fixed orientation labels drawn under the heat.
+NEIGHBORHOOD_LABELS: List[Tuple[str, float, float]] = [
+    ("Harlem", 40.8116, -73.9465),
+    ("Upper West Side", 40.7870, -73.9754),
+    ("Midtown", 40.7549, -73.9840),
+    ("Chelsea", 40.7465, -74.0014),
+    ("East Village", 40.7265, -73.9815),
+    ("Lower East Side", 40.7150, -73.9890),
+    ("Williamsburg", 40.7081, -73.9571),
+    ("Bushwick", 40.7053, -73.9336),
+    ("Fort Greene", 40.6884, -73.9740),
+    ("Bed-Stuy", 40.6870, -73.9410),
+    ("Park Slope", 40.6719, -73.9843),
+    ("Astoria", 40.7644, -73.9235),
+    ("Jackson Heights", 40.7557, -73.8853),
+    ("Flushing", 40.7675, -73.8331),
+    ("South Bronx", 40.8150, -73.9240),
+]
+
+
+def places_to_points(places: Iterable[Dict[str, object]]) -> List[Point]:
+    """Convert saved-place records ({n, lat, lng, c}) into heat points.
+
+    The category becomes both the point's label and its category, so the
+    label stats read as category stats. Records with missing, non-numeric,
+    or out-of-range coordinates are skipped, same as CSV rows.
+    """
+    points: List[Point] = []
+    for place in places:
+        if place is None:
+            continue
+        try:
+            lat = float(place.get("lat"))  # type: ignore[arg-type]
+            lng = float(place.get("lng"))  # type: ignore[arg-type]
+        except (TypeError, ValueError):
+            continue
+        if not (math.isfinite(lat) and math.isfinite(lng)):
+            continue
+        if not (-90.0 <= lat <= 90.0 and -180.0 <= lng <= 180.0):
+            continue
+        category = str(place.get("c") or "").strip()
+        point: Point = {
+            "lat": lat, "lng": lng, "weight": 1.0,
+            "label": category, "category": category,
+            "name": str(place.get("n") or "").strip(),
+        }
+        points.append(point)
+    return points
+
+
+def distinct_categories(points: Sequence[Point]) -> List[str]:
+    """Categories present in the points, most frequent first, ties by name."""
+    counts: Dict[str, int] = {}
+    for p in points:
+        category = str(p.get("category") or "").strip()
+        if category:
+            counts[category] = counts.get(category, 0) + 1
+    return [name for name, _ in sorted(counts.items(), key=lambda item: (-item[1], item[0]))]
+
+
+def filter_by_category(points: Sequence[Point], category: str) -> List[Point]:
+    """Return the points in one category; "all" returns every point."""
+    if category == "all":
+        return list(points)
+    return [p for p in points if str(p.get("category") or "") == category]
+
+
+def labels_in_view(labels: Sequence[Tuple[str, float, float]],
+                   bounds: Bounds) -> List[Tuple[str, float, float]]:
+    """Return the labels whose coordinates fall inside the bounds (inclusive)."""
+    min_lat, max_lat, min_lng, max_lng = bounds
+    return [
+        (name, lat, lng) for name, lat, lng in labels
+        if min_lat <= lat <= max_lat and min_lng <= lng <= max_lng
+    ]
+
+
+def nearest_label(lat: float, lng: float,
+                  labels: Sequence[Tuple[str, float, float]]) -> str:
+    """Name of the label nearest to a coordinate.
+
+    Distance is squared degrees with longitude scaled by cos(latitude),
+    so east-west distances are not overstated at city latitudes.
+    """
+    if not labels:
+        raise ValueError("at least one label is required")
+    scale = math.cos(math.radians(lat))
+
+    def dist2(item: Tuple[str, float, float]) -> float:
+        _, la, ln = item
+        return (la - lat) ** 2 + ((ln - lng) * scale) ** 2
+
+    return min(labels, key=dist2)[0]
+
+
+# --------------------------------------------------------------------------
 # Standalone HTML output
 # --------------------------------------------------------------------------
 

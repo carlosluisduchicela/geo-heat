@@ -1,11 +1,13 @@
 'use strict';
 
-/* geo-heat web demo — the offline heatmap lab. No libraries, no network,
- * no map tiles. Heat is rendered in two passes:
+/* geo-heat web demo. No libraries, no network, no map tiles. Heat is
+ * rendered in two passes:
  *   1. radial-gradient intensity blobs on an offscreen canvas (grayscale)
  *   2. a color ramp applied per-pixel, composited at the chosen opacity
  * Scenes are fictional point sets generated locally with a seeded PRNG,
  * so the demo is identical on every load and works straight from file://.
+ * If an optional places-data.js defines window.PLACES_DATA, a "my places"
+ * scene of real saved places becomes the default scene instead.
  */
 
 // ------------------------------------------------------------- Sample + scenes
@@ -48,10 +50,12 @@ function clusterCsv(rng, clusters) {
 const SCENES = {
   sample: {
     name: 'Neighborhoods',
+    defaults: { radius: 36, intensity: 100, opacity: 90, palette: 'classic' },
     csv: function () { return SAMPLE_CSV; },
   },
   delivery: {
     name: 'Delivery rush',
+    defaults: { radius: 30, intensity: 110, opacity: 90, palette: 'classic' },
     csv: function () {
       return clusterCsv(mulberry32(20240), [
         { lat: 40.758, lng: -73.985, n: 46, spread: 0.006, weight: 5, label: 'restaurant' },
@@ -64,6 +68,7 @@ const SCENES = {
   },
   stadium: {
     name: 'Stadium night',
+    defaults: { radius: 28, intensity: 120, opacity: 90, palette: 'classic' },
     csv: function () {
       return clusterCsv(mulberry32(9182), [
         { lat: 40.820, lng: -73.950, n: 90, spread: 0.0032, weight: 5, label: 'gate' },
@@ -75,6 +80,7 @@ const SCENES = {
   },
   parks: {
     name: 'Weekend parks',
+    defaults: { radius: 42, intensity: 100, opacity: 90, palette: 'classic' },
     csv: function () {
       return clusterCsv(mulberry32(55501), [
         { lat: 40.790, lng: -73.960, n: 26, spread: 0.009, weight: 3, label: 'picnic' },
@@ -86,13 +92,111 @@ const SCENES = {
   },
 };
 
+// ------------------------------------------------------------- My places
+
+/* Optional real data: places-data.js may define
+ * window.PLACES_DATA = [{n: name, lat, lng, c: category}, ...].
+ * Absent or empty data changes nothing — no places scene, no places UI.
+ */
+const PLACES_DATA = (typeof window !== 'undefined' && Array.isArray(window.PLACES_DATA))
+  ? window.PLACES_DATA : [];
+const HAS_PLACES = PLACES_DATA.length > 0;
+
+/* Fixed orientation labels for places mode, drawn under the heat. */
+const NEIGHBORHOOD_LABELS = [
+  { name: 'Harlem', lat: 40.8116, lng: -73.9465 },
+  { name: 'Upper West Side', lat: 40.7870, lng: -73.9754 },
+  { name: 'Midtown', lat: 40.7549, lng: -73.9840 },
+  { name: 'Chelsea', lat: 40.7465, lng: -74.0014 },
+  { name: 'East Village', lat: 40.7265, lng: -73.9815 },
+  { name: 'Lower East Side', lat: 40.7150, lng: -73.9890 },
+  { name: 'Williamsburg', lat: 40.7081, lng: -73.9571 },
+  { name: 'Bushwick', lat: 40.7053, lng: -73.9336 },
+  { name: 'Fort Greene', lat: 40.6884, lng: -73.9740 },
+  { name: 'Bed-Stuy', lat: 40.6870, lng: -73.9410 },
+  { name: 'Park Slope', lat: 40.6719, lng: -73.9843 },
+  { name: 'Astoria', lat: 40.7644, lng: -73.9235 },
+  { name: 'Jackson Heights', lat: 40.7557, lng: -73.8853 },
+  { name: 'Flushing', lat: 40.7675, lng: -73.8331 },
+  { name: 'South Bronx', lat: 40.8150, lng: -73.9240 },
+];
+
+function placesToPoints(places) {
+  const points = [];
+  places.forEach(function (place) {
+    if (!place) return;
+    const lat = Number(place.lat), lng = Number(place.lng);
+    if (!Number.isFinite(lat) || !Number.isFinite(lng)) return;
+    if (lat < -90 || lat > 90 || lng < -180 || lng > 180) return;
+    const category = String(place.c || '').trim();
+    points.push({
+      lat: lat, lng: lng, weight: 1,
+      label: category, category: category, name: String(place.n || '').trim(),
+    });
+  });
+  return points;
+}
+
+function distinctCategories(points) {
+  const counts = new Map();
+  points.forEach(function (p) {
+    if (p.category) counts.set(p.category, (counts.get(p.category) || 0) + 1);
+  });
+  return Array.from(counts.entries())
+    .sort(function (a, b) { return b[1] - a[1] || (a[0] < b[0] ? -1 : 1); })
+    .map(function (e) { return e[0]; });
+}
+
+function filterByCategory(points, category) {
+  if (category === 'all') return points.slice();
+  return points.filter(function (p) { return p.category === category; });
+}
+
+function labelsInView(labels, bounds) {
+  return labels.filter(function (l) {
+    return l.lat >= bounds.minLat && l.lat <= bounds.maxLat &&
+           l.lng >= bounds.minLng && l.lng <= bounds.maxLng;
+  });
+}
+
+/* Longitude is scaled by cos(latitude) so east-west distances are not
+ * overstated at city latitudes. Mirrors nearest_label in geo_heat.py. */
+function nearestLabel(lat, lng, labels) {
+  const scale = Math.cos(lat * Math.PI / 180);
+  let best = null, bestD = Infinity;
+  labels.forEach(function (l) {
+    const d = (l.lat - lat) * (l.lat - lat) + Math.pow((l.lng - lng) * scale, 2);
+    if (d < bestD) { bestD = d; best = l; }
+  });
+  return best;
+}
+
+if (HAS_PLACES) {
+  SCENES.places = {
+    name: 'My places',
+    defaults: { radius: 46, intensity: 100, opacity: 90, palette: 'classic' },
+    points: function () { return placesToPoints(PLACES_DATA); },
+  };
+}
+
+/* Defaults for data the visitor brings (upload / paste). */
+const CUSTOM_DEFAULTS = { radius: 36, intensity: 100, opacity: 90, palette: 'classic' };
+
+function sceneDefaults(key) {
+  const scene = SCENES[key];
+  const d = scene ? scene.defaults : CUSTOM_DEFAULTS;
+  return { radius: d.radius, intensity: d.intensity, opacity: d.opacity, palette: d.palette };
+}
+
 // ------------------------------------------------------------- State + elements
 
 const state = {
-  points: [],
+  points: [],       // the points on the map, after any category filter
+  sourcePoints: [], // the full set for the current scene / source
   projected: [], // {x, y, point} in CSS-pixel canvas coordinates, for hover
   bounds: null,
   scene: 'sample',
+  category: 'all',
 };
 
 const els = {
@@ -114,13 +218,22 @@ const els = {
   useWeights: document.getElementById('useWeights'),
   showMarkers: document.getElementById('showMarkers'),
   showDensest: document.getElementById('showDensest'),
-  sceneChips: Array.prototype.slice.call(document.querySelectorAll('.chip[data-scene]')),
+  sceneChipsGroup: document.getElementById('sceneChips'),
+  categoryRow: document.getElementById('categoryRow'),
+  categoryChips: document.getElementById('categoryChips'),
+  resetControls: document.getElementById('resetControls'),
+  headline: document.getElementById('headline'),
+  promise: document.getElementById('promise'),
   status: document.getElementById('status'),
   statCount: document.getElementById('statCount'),
+  statCountLabel: document.getElementById('statCountLabel'),
   statDensest: document.getElementById('statDensest'),
   statWeight: document.getElementById('statWeight'),
   statHot: document.getElementById('statHot'),
+  statHotLabel: document.getElementById('statHotLabel'),
   statDensestCenter: document.getElementById('statDensestCenter'),
+  hoodDt: document.getElementById('hoodDt'),
+  statNeighborhood: document.getElementById('statNeighborhood'),
   statBounds: document.getElementById('statBounds'),
   statSpan: document.getElementById('statSpan'),
   statLabels: document.getElementById('statLabels'),
@@ -297,6 +410,23 @@ function drawGrid(ctx, W, H, dpr) {
   }
 }
 
+/* Neighborhood names for places mode: small and muted, drawn on the
+ * background before the heat pass so the heat washes over them. */
+function drawNeighborhoodLabels(ctx, W, H, dpr) {
+  if (!state.bounds) return;
+  const visible = labelsInView(NEIGHBORHOOD_LABELS, state.bounds);
+  if (!visible.length) return;
+  ctx.save();
+  ctx.font = '600 ' + (11 * dpr) + 'px system-ui, sans-serif';
+  ctx.textAlign = 'center';
+  ctx.fillStyle = 'rgba(205,216,238,0.5)';
+  visible.forEach(function (l) {
+    const xy = project(l, state.bounds, W, H);
+    ctx.fillText(l.name, xy[0], xy[1]);
+  });
+  ctx.restore();
+}
+
 let renderQueued = false;
 function scheduleRender() {
   if (renderQueued) return;
@@ -318,6 +448,7 @@ function render() {
   const ctx = canvas.getContext('2d');
   ctx.clearRect(0, 0, W, H);
   drawGrid(ctx, W, H, dpr);
+  if (state.scene === 'places') drawNeighborhoodLabels(ctx, W, H, dpr);
   state.projected = [];
 
   if (!state.points.length) {
@@ -404,12 +535,18 @@ function fmt(n) { return n.toFixed(3); }
 
 function updateStats() {
   const points = state.points;
+  const placesMode = state.scene === 'places';
+  els.statCountLabel.textContent = placesMode ? 'places plotted' : 'points on the map';
+  els.statHotLabel.textContent = placesMode ? 'top category' : 'hottest label (by weight)';
+  els.hoodDt.hidden = !placesMode;
+  els.statNeighborhood.hidden = !placesMode;
   if (!points.length) {
     els.statCount.textContent = '0';
     els.statDensest.textContent = '—';
     els.statWeight.textContent = '—';
     els.statHot.textContent = '—';
     els.statDensestCenter.textContent = '—';
+    els.statNeighborhood.textContent = '—';
     els.statBounds.textContent = '—';
     els.statSpan.textContent = '—';
     els.statLabels.textContent = '—';
@@ -420,6 +557,10 @@ function updateStats() {
   const cell = densestCell(points, 10);
   els.statDensest.textContent = String(cell.count);
   els.statDensestCenter.textContent = fmt(cell.centerLat) + ', ' + fmt(cell.centerLng);
+  if (placesMode) {
+    const hood = nearestLabel(cell.centerLat, cell.centerLng, NEIGHBORHOOD_LABELS);
+    els.statNeighborhood.textContent = hood ? hood.name : '—';
+  }
   const totalWeight = points.reduce(function (sum, p) { return sum + p.weight; }, 0);
   els.statWeight.textContent = String(Math.round(totalWeight * 10) / 10);
   els.statHot.textContent = hottestLabel(points) || '—';
@@ -434,39 +575,126 @@ function updateStats() {
     : '—';
 }
 
+const GENERIC_HEADLINE = 'a list of coordinates in. a heatmap out.';
+const GENERIC_PROMISE = 'paste latitude/longitude points or a csv and see where things cluster — the densest spot gets ringed, the numbers sit next to the map. no map tiles, no upload; everything renders in your browser.';
+const PLACES_HEADLINE = 'my new york, as a heatmap.';
+
+function updateHeader() {
+  if (state.scene === 'places') {
+    els.headline.textContent = PLACES_HEADLINE;
+    els.promise.textContent =
+      'every place i\'ve saved — ' + PLACES_DATA.length.toLocaleString('en-US') +
+      ' restaurants, bars, bakeries, and counters across the city — plotted at once. ' +
+      'where i eat, where i drink, and the neighborhoods i keep going back to, drawn from the list itself.';
+  } else {
+    els.headline.textContent = GENERIC_HEADLINE;
+    els.promise.textContent = GENERIC_PROMISE;
+  }
+}
+
+function applySceneDefaults(key) {
+  const d = sceneDefaults(key);
+  els.radius.value = d.radius;
+  els.intensity.value = d.intensity;
+  els.opacity.value = d.opacity;
+  els.palette.value = d.palette;
+  syncControlLabels();
+}
+
+function buildCategoryChips() {
+  els.categoryChips.innerHTML = '';
+  if (state.scene !== 'places') return;
+  const categories = ['all'].concat(distinctCategories(state.sourcePoints));
+  categories.forEach(function (cat) {
+    const chip = document.createElement('button');
+    chip.type = 'button';
+    chip.className = 'chip' + (cat === state.category ? ' is-active' : '');
+    chip.dataset.category = cat;
+    chip.textContent = cat;
+    els.categoryChips.appendChild(chip);
+  });
+}
+
+function applyCategoryFilter() {
+  state.points = state.scene === 'places'
+    ? filterByCategory(state.sourcePoints, state.category)
+    : state.sourcePoints.slice();
+  state.bounds = state.points.length ? computeBounds(state.points) : null;
+}
+
 function setPoints(points, sourceLabel) {
-  state.points = points;
-  state.bounds = points.length ? computeBounds(points) : null;
+  state.sourcePoints = points;
+  applyCategoryFilter();
   els.status.textContent = points.length
-    ? points.length + ' points on the map · ' + sourceLabel + '. Drag the sliders — the heat re-renders live.'
+    ? points.length + ' points on the map · ' + sourceLabel + '.'
     : 'No valid points found in ' + sourceLabel + '. Check for lat,lng values in range.';
+  buildCategoryChips();
+  updateHeader();
   scheduleRender();
+}
+
+function refreshSceneChips() {
+  Array.prototype.forEach.call(
+    els.sceneChipsGroup.querySelectorAll('.chip[data-scene]'),
+    function (chip) {
+      chip.classList.toggle('is-active', chip.dataset.scene === state.scene);
+    }
+  );
 }
 
 function setScene(key) {
   state.scene = key;
-  els.sceneChips.forEach(function (chip) {
-    chip.classList.toggle('is-active', chip.dataset.scene === key);
-  });
-  setPoints(parseCSV(SCENES[key].csv()), 'scene: ' + SCENES[key].name);
+  state.category = 'all';
+  els.categoryRow.hidden = key !== 'places';
+  applySceneDefaults(key);
+  refreshSceneChips();
+  const scene = SCENES[key];
+  setPoints(scene.points ? scene.points() : parseCSV(scene.csv()), 'scene: ' + scene.name);
+}
+
+function setCustomPoints(points, sourceLabel) {
+  state.scene = 'custom';
+  state.category = 'all';
+  els.categoryRow.hidden = true;
+  refreshSceneChips();
+  setPoints(points, sourceLabel);
 }
 
 // ---------------------------------------------------------------- Events
 
-els.sceneChips.forEach(function (chip) {
-  chip.addEventListener('click', function () { setScene(chip.dataset.scene); });
+els.sceneChipsGroup.addEventListener('click', function (ev) {
+  const chip = ev.target.closest('.chip[data-scene]');
+  if (chip) setScene(chip.dataset.scene);
+});
+
+els.categoryChips.addEventListener('click', function (ev) {
+  const chip = ev.target.closest('.chip[data-category]');
+  if (!chip) return;
+  state.category = chip.dataset.category;
+  Array.prototype.forEach.call(els.categoryChips.children, function (c) {
+    c.classList.toggle('is-active', c === chip);
+  });
+  applyCategoryFilter();
+  els.status.textContent = state.points.length + ' of ' + state.sourcePoints.length +
+    ' places on the map · category: ' + state.category + '.';
+  scheduleRender();
 });
 
 els.fileInput.addEventListener('change', function () {
   const file = els.fileInput.files && els.fileInput.files[0];
   if (!file) return;
   const reader = new FileReader();
-  reader.onload = function () { setPoints(parseCSV(String(reader.result || '')), file.name); };
+  reader.onload = function () { setCustomPoints(parseCSV(String(reader.result || '')), file.name); };
   reader.readAsText(file);
 });
 
 els.loadPaste.addEventListener('click', function () {
-  setPoints(parseCSV(els.pasteBox.value), 'pasted points');
+  setCustomPoints(parseCSV(els.pasteBox.value), 'pasted points');
+});
+
+els.resetControls.addEventListener('click', function () {
+  applySceneDefaults(state.scene);
+  scheduleRender();
 });
 
 els.exportPng.addEventListener('click', function () {
@@ -508,8 +736,9 @@ els.canvas.addEventListener('mousemove', function (ev) {
   });
   if (!best) { els.tooltip.hidden = true; return; }
   const p = best.point;
-  els.tooltip.textContent =
-    (p.label ? p.label + ' · ' : '') + fmt(p.lat) + ', ' + fmt(p.lng) + ' · weight ' + p.weight;
+  els.tooltip.textContent = p.name
+    ? p.name + (p.category ? ' · ' + p.category : '')
+    : (p.label ? p.label + ' · ' : '') + fmt(p.lat) + ', ' + fmt(p.lng) + ' · weight ' + p.weight;
   els.tooltip.style.left = (pos.x + 12) + 'px';
   els.tooltip.style.top = (pos.y + 12) + 'px';
   els.tooltip.hidden = false;
@@ -525,6 +754,16 @@ window.addEventListener('resize', function () {
   resizeTimer = setTimeout(scheduleRender, 120);
 });
 
-// Start on the sample scene so the first screen is a real heatmap, not a blank box.
+// With saved places loaded, "my places" leads and its chip goes first.
+// Otherwise start on the sample scene so the first screen is a real
+// heatmap, not a blank box.
+if (HAS_PLACES) {
+  const placesChip = document.createElement('button');
+  placesChip.type = 'button';
+  placesChip.className = 'chip';
+  placesChip.dataset.scene = 'places';
+  placesChip.textContent = 'My places';
+  els.sceneChipsGroup.insertBefore(placesChip, els.sceneChipsGroup.firstChild);
+}
 syncControlLabels();
-setScene('sample');
+setScene(HAS_PLACES ? 'places' : 'sample');
