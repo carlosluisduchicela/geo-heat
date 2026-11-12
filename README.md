@@ -4,8 +4,8 @@ Turn a CSV of latitude/longitude points into a heatmap in your browser or from t
 
 ## What it does
 
-- Renders a real heatmap on a `<canvas>`: points are drawn as radial-gradient intensity blobs on an offscreen canvas, then a second pass maps that intensity through a blue → cyan → green → yellow → red color ramp. Optional weights make high-traffic points burn hotter.
-- Works fully offline and in the browser: load the bundled sample (40 fake points in three clusters), upload your own CSV, or paste CSV text. Markers, hover labels, and a stats panel (point count, bounding box, densest grid cell, top labels) update live as you change the heat radius.
+- Renders a real heatmap on a `<canvas>`: points are drawn as radial-gradient intensity blobs on an offscreen canvas, then a second pass maps that intensity through a color ramp (Classic, Ember, or Ocean). Optional weights make high-traffic points burn hotter. Radius, intensity, and heat opacity sliders re-render live.
+- Works fully offline and in the browser, styled as a small "map lab": a dark gridded canvas with corner coordinates, a cursor lat/lng readout, and a dashed ring around the densest cluster. Four fictional scenes ship as one-click presets — Neighborhoods (40 fake points in three clusters), Delivery rush, Stadium night, and Weekend parks, all generated locally with a seeded PRNG — or upload your own CSV / paste points (headers optional). An insights panel (point count, densest cluster and its center, total weight, hottest label, bounding box, area covered in km, top labels) updates with every change, and the map exports to PNG.
 - Ships a Python CLI that does the same thing from a file: one CSV in, one single self-contained `output.html` out — the points are embedded as JSON and the renderer is inline, so the output file needs no other assets.
 
 ## Run the web demo
@@ -19,7 +19,7 @@ python3 -m http.server 8000
 
 or just open `index.html` in a browser (the sample data is embedded, so it works from `file://` too).
 
-Controls: **Load Sample**, **Upload CSV**, paste-CSV box, heat **radius** slider, **Use weights** toggle, **Show markers** toggle. Hover a marker to see its label, coordinates, and weight.
+Controls: scene chips, **Upload CSV**, paste-points box, **Export PNG**, heat **radius** / **intensity** / **opacity** sliders, **palette** picker, **Use weights**, **Show markers**, and **Ring the densest cluster** toggles. Hover a marker to see its label, coordinates, and weight; the corner readout tracks your cursor's lat/lng.
 
 ## Run the CLI
 

@@ -3,36 +3,44 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>geo-heat — CSV to heatmap in your browser</title>
+<title>geo-heat — the offline heatmap lab</title>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<header>
-  <h1>geo-heat</h1>
-  <p class="tagline">Drop a CSV of points in, get a heatmap out. No tiles, no server, no network — everything renders on a canvas, offline.</p>
+<header class="topbar">
+  <div class="brand">
+    <span class="logo" aria-hidden="true"></span>
+    <div>
+      <h1>geo-heat</h1>
+      <p class="tagline">The offline heatmap lab. Points in, heat out — no tiles, no API key, no network. Everything renders on a canvas in your browser.</p>
+    </div>
+  </div>
+  <p class="how">Try it: pick a scene, drag the sliders, hover the map. Then paste your own <code>lat,lng</code> points.</p>
 </header>
 
 <main>
-  <section class="controls" aria-label="Controls">
-    <div class="row">
-      <button id="loadSample" type="button">Load sample data</button>
+  <section class="panel scenes" aria-label="Scenes">
+    <div class="panel-head">
+      <h2>Scenes</h2>
+      <span class="hint">fictional data, generated locally</span>
+    </div>
+    <div class="chips" role="group" aria-label="Preset scenes">
+      <button type="button" class="chip is-active" data-scene="sample">Neighborhoods</button>
+      <button type="button" class="chip" data-scene="delivery">Delivery rush</button>
+      <button type="button" class="chip" data-scene="stadium">Stadium night</button>
+      <button type="button" class="chip" data-scene="parks">Weekend parks</button>
+    </div>
+    <div class="row actions">
       <label class="file-label">
         Upload CSV
         <input id="fileInput" type="file" accept=".csv,text/csv">
       </label>
+      <button id="exportPng" type="button">Export PNG</button>
     </div>
-    <div class="row">
-      <label for="radius">Heat radius <span id="radiusValue">36</span>px</label>
-      <input id="radius" type="range" min="10" max="80" step="2" value="36">
-    </div>
-    <div class="row checkboxes">
-      <label><input id="useWeights" type="checkbox" checked> Use weights</label>
-      <label><input id="showMarkers" type="checkbox" checked> Show markers</label>
-    </div>
-    <details>
-      <summary>Paste CSV instead</summary>
-      <textarea id="pasteBox" rows="7" spellcheck="false" placeholder="lat,lng,weight,label&#10;40.811,-73.946,3,cafe"></textarea>
-      <button id="loadPaste" type="button">Load pasted CSV</button>
+    <details class="paste">
+      <summary>Paste points instead</summary>
+      <textarea id="pasteBox" rows="6" spellcheck="false" placeholder="lat,lng,weight,label&#10;40.811,-73.946,3,cafe&#10;&#10;— or headerless, just pairs —&#10;40.811,-73.946"></textarea>
+      <button id="loadPaste" type="button">Load pasted points</button>
     </details>
     <p id="status" class="status" role="status"></p>
   </section>
@@ -41,34 +49,91 @@
     <div class="canvas-wrap">
       <canvas id="heat" width="960" height="600"></canvas>
       <div id="tooltip" class="tooltip" hidden></div>
+      <div id="cursorReadout" class="cursor-readout" aria-hidden="true">move over the map</div>
     </div>
     <div class="legend" aria-hidden="true">
       <span>low</span>
-      <div class="ramp"></div>
+      <div class="ramp" id="legendRamp"></div>
       <span>high</span>
     </div>
-    <aside class="stats" aria-label="Statistics">
-      <h2>Stats</h2>
-      <dl>
-        <dt>Points</dt><dd id="statCount">—</dd>
-        <dt>Bounding box</dt><dd id="statBounds">—</dd>
-        <dt>Densest cell (10×10 grid)</dt><dd id="statDensest">—</dd>
-        <dt>Top labels</dt><dd id="statLabels">—</dd>
-      </dl>
-    </aside>
   </section>
+
+  <section class="panel controls" aria-label="Controls">
+    <div class="panel-head">
+      <h2>Heat controls</h2>
+      <span class="hint">everything re-renders live</span>
+    </div>
+    <div class="slider-grid">
+      <div class="slider-row">
+        <label for="radius">Radius <span class="val" id="radiusValue">36px</span></label>
+        <input id="radius" type="range" min="10" max="90" step="2" value="36">
+      </div>
+      <div class="slider-row">
+        <label for="intensity">Intensity <span class="val" id="intensityValue">100%</span></label>
+        <input id="intensity" type="range" min="30" max="200" step="5" value="100">
+      </div>
+      <div class="slider-row">
+        <label for="opacity">Heat opacity <span class="val" id="opacityValue">90%</span></label>
+        <input id="opacity" type="range" min="20" max="100" step="5" value="90">
+      </div>
+      <div class="slider-row">
+        <label for="palette">Palette</label>
+        <select id="palette">
+          <option value="classic" selected>Classic</option>
+          <option value="ember">Ember</option>
+          <option value="ocean">Ocean</option>
+        </select>
+      </div>
+    </div>
+    <div class="row checkboxes">
+      <label><input id="useWeights" type="checkbox" checked> Use weights</label>
+      <label><input id="showMarkers" type="checkbox" checked> Show markers</label>
+      <label><input id="showDensest" type="checkbox" checked> Ring the densest cluster</label>
+    </div>
+  </section>
+
+  <aside class="panel insights" aria-label="Insights">
+    <div class="panel-head">
+      <h2>Insights</h2>
+      <span class="hint">computed from the points on the map</span>
+    </div>
+    <div class="insight-grid">
+      <div class="insight">
+        <span class="insight-num" id="statCount">—</span>
+        <span class="insight-label">points on the map</span>
+      </div>
+      <div class="insight">
+        <span class="insight-num" id="statDensest">—</span>
+        <span class="insight-label">in the densest cluster</span>
+      </div>
+      <div class="insight">
+        <span class="insight-num" id="statWeight">—</span>
+        <span class="insight-label">total weight</span>
+      </div>
+      <div class="insight">
+        <span class="insight-num" id="statHot">—</span>
+        <span class="insight-label">hottest label (by weight)</span>
+      </div>
+    </div>
+    <dl class="details-list">
+      <dt>Densest cluster center</dt><dd id="statDensestCenter">—</dd>
+      <dt>Bounding box</dt><dd id="statBounds">—</dd>
+      <dt>Area covered</dt><dd id="statSpan">—</dd>
+      <dt>Top labels</dt><dd id="statLabels">—</dd>
+    </dl>
+  </aside>
 
   <section class="format-note">
     <h2>Input format</h2>
     <pre>lat,lng,weight,label
 40.811,-73.946,3,cafe
 40.728,-73.990,1,park</pre>
-    <p><code>lat</code> and <code>lng</code> are required. <code>weight</code> and <code>label</code> are optional. Rows with bad coordinates are skipped.</p>
+    <p><code>lat</code> and <code>lng</code> are required. <code>weight</code> and <code>label</code> are optional. Pasted points can skip the header — bare <code>lat,lng</code> pairs work too. Rows with bad coordinates are skipped.</p>
   </section>
 </main>
 
 <footer>
-  <p>MIT. Equirectangular projection — accurate at city scale, distorted at global scale. See the README for the Python CLI version.</p>
+  <p>MIT. Equirectangular projection — accurate at city scale, distorted at global scale. There is a Python CLI version too: it turns a CSV into a single standalone HTML file. See the README.</p>
 </footer>
 
 <script src="app.js"></script>
