@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>geo-heat — CSV to heatmap in your browser</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+  <h1>geo-heat</h1>
+  <p class="tagline">Drop a CSV of points in, get a heatmap out. No tiles, no server, no network — everything renders on a canvas, offline.</p>
+</header>
+
+<main>
+  <section class="controls" aria-label="Controls">
+    <div class="row">
+      <button id="loadSample" type="button">Load sample data</button>
+      <label class="file-label">
+        Upload CSV
+        <input id="fileInput" type="file" accept=".csv,text/csv">
+      </label>
+    </div>
+    <div class="row">
+      <label for="radius">Heat radius <span id="radiusValue">36</span>px</label>
+      <input id="radius" type="range" min="10" max="80" step="2" value="36">
+    </div>
+    <div class="row checkboxes">
+      <label><input id="useWeights" type="checkbox" checked> Use weights</label>
+      <label><input id="showMarkers" type="checkbox" checked> Show markers</label>
+    </div>
+    <details>
+      <summary>Paste CSV instead</summary>
+      <textarea id="pasteBox" rows="7" spellcheck="false" placeholder="lat,lng,weight,label&#10;40.811,-73.946,3,cafe"></textarea>
+      <button id="loadPaste" type="button">Load pasted CSV</button>
+    </details>
+    <p id="status" class="status" role="status"></p>
+  </section>
+
+  <section class="stage">
+    <div class="canvas-wrap">
+      <canvas id="heat" width="960" height="600"></canvas>
+      <div id="tooltip" class="tooltip" hidden></div>
+    </div>
+    <div class="legend" aria-hidden="true">
+      <span>low</span>
+      <div class="ramp"></div>
+      <span>high</span>
+    </div>
+    <aside class="stats" aria-label="Statistics">
+      <h2>Stats</h2>
+      <dl>
+        <dt>Points</dt><dd id="statCount">—</dd>
+        <dt>Bounding box</dt><dd id="statBounds">—</dd>
+        <dt>Densest cell (10×10 grid)</dt><dd id="statDensest">—</dd>
+        <dt>Top labels</dt><dd id="statLabels">—</dd>
+      </dl>
+    </aside>
+  </section>
+
+  <section class="format-note">
+    <h2>Input format</h2>
+    <pre>lat,lng,weight,label
+40.811,-73.946,3,cafe
+40.728,-73.990,1,park</pre>
+    <p><code>lat</code> and <code>lng</code> are required. <code>weight</code> and <code>label</code> are optional. Rows with bad coordinates are skipped.</p>
+  </section>
+</main>
+
+<footer>
+  <p>MIT. Equirectangular projection — accurate at city scale, distorted at global scale. See the README for the Python CLI version.</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
