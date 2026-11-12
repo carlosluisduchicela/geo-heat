@@ -583,9 +583,9 @@ function updateHeader() {
   if (state.scene === 'places') {
     els.headline.textContent = PLACES_HEADLINE;
     els.promise.textContent =
-      'every place i\'ve saved — ' + PLACES_DATA.length.toLocaleString('en-US') +
-      ' restaurants, bars, bakeries, and counters across the city — plotted at once. ' +
-      'where i eat, where i drink, and the neighborhoods i keep going back to, drawn from the list itself.';
+      'the places i save, plotted: ' + PLACES_DATA.length.toLocaleString('en-US') +
+      ' coffee shops, galleries, bookstores, and counters across new york, drawn from my own lists. ' +
+      'where i keep going back to, as one map.';
   } else {
     els.headline.textContent = GENERIC_HEADLINE;
     els.promise.textContent = GENERIC_PROMISE;
