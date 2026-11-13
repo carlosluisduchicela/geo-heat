@@ -1,0 +1,1676 @@
+{
+ "ringram new york": {
+  "title": "ringram New York",
+  "lists": [
+   "activities"
+  ],
+  "category": "activities",
+  "status": "ok",
+  "lat": 40.722388,
+  "lng": -73.995305,
+  "fbid": 644535804909159,
+  "source": "search-exact-location",
+  "address": "223 Mott St, New York, NY"
+ },
+ "moma ps1": {
+  "title": "MoMA PS1",
+  "lists": [
+   "art galleries",
+   "nyc"
+  ],
+  "category": "art galleries",
+  "status": "ok",
+  "lat": 40.74561,
+  "lng": -73.947098,
+  "fbid": 1084370642186442,
+  "source": "search-exact-location",
+  "address": "22-25 Jackson Ave, Long Island City, NY"
+ },
+ "the noguchi museum": {
+  "title": "The Noguchi Museum",
+  "lists": [
+   "art galleries"
+  ],
+  "category": "art galleries",
+  "status": "ok",
+  "lat": 40.766835,
+  "lng": -73.938112,
+  "fbid": 7860062997399547,
+  "source": "search-exact-location",
+  "address": "9-01 33rd Rd, Astoria, NY"
+ },
+ "solomon r. guggenheim museum": {
+  "title": "Solomon R. Guggenheim Museum",
+  "lists": [
+   "art galleries"
+  ],
+  "category": "art galleries",
+  "status": "ok",
+  "lat": 40.783059,
+  "lng": -73.959066,
+  "fbid": 941121787138117,
+  "source": "search-exact-location",
+  "address": "1071 5th Ave, New York, NY"
+ },
+ "subsconscious": {
+  "title": "Subsconscious",
+  "lists": [
+   "coffee writing",
+   "nyc"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.809023,
+  "lng": -73.959295,
+  "fbid": 778541116895566,
+  "source": "search-exact-location",
+  "address": "1213 Amsterdam Ave, New York, NY 10027"
+ },
+ "cafe charmant": {
+  "title": "Cafe Charmant",
+  "lists": [
+   "nyc"
+  ],
+  "category": "new york",
+  "status": "fail",
+  "source": "search-no-structured-block",
+  "address": "340 Bleecker St, New York, NY 10014",
+  "notes": "address confirmed in multiple sources; no Exact Location block returned on retry"
+ },
+ "david nolan gallery": {
+  "title": "David Nolan Gallery",
+  "lists": [
+   "art galleries"
+  ],
+  "category": "art galleries",
+  "status": "ok",
+  "lat": 40.717296,
+  "lng": -74.005382,
+  "fbid": 1396054544377557,
+  "source": "search-exact-location",
+  "address": "74 Leonard St, New York, NY"
+ },
+ "galerie buchholz": {
+  "title": "Galerie Buchholz",
+  "lists": [
+   "art galleries"
+  ],
+  "category": "art galleries",
+  "status": "ok",
+  "lat": 40.761995,
+  "lng": -73.977132,
+  "fbid": 383456924150168,
+  "source": "search-exact-location",
+  "address": "31 W 54th St, New York, NY"
+ },
+ "neue galerie new york": {
+  "title": "Neue Galerie New York",
+  "lists": [
+   "art galleries"
+  ],
+  "category": "art galleries",
+  "status": "ok",
+  "lat": 40.781319,
+  "lng": -73.96027,
+  "fbid": 2846794815625022,
+  "source": "search-exact-location",
+  "address": "1048 5th Ave, New York, NY"
+ },
+ "questroyal fine art": {
+  "title": "Questroyal Fine Art",
+  "lists": [
+   "art galleries"
+  ],
+  "category": "art galleries",
+  "status": "ok",
+  "lat": 40.775643,
+  "lng": -73.960129,
+  "fbid": 797664718076895,
+  "source": "search-exact-location",
+  "address": "903 Park Ave, New York, NY"
+ },
+ "nicholas brawer gallery": {
+  "title": "Nicholas Brawer Gallery",
+  "lists": [
+   "art galleries"
+  ],
+  "category": "art galleries",
+  "status": "ok",
+  "lat": 40.776895,
+  "lng": -73.961828,
+  "fbid": 3221671954711001,
+  "source": "search-exact-location",
+  "address": "1046 Madison Ave, New York, NY"
+ },
+ "leila heller gallery": {
+  "title": "Leila Heller Gallery",
+  "lists": [
+   "art galleries"
+  ],
+  "category": "art galleries",
+  "status": "ok",
+  "lat": 40.777009,
+  "lng": -73.962138,
+  "fbid": 745948079953317,
+  "source": "search-exact-location",
+  "address": "22 E 80th St, New York, NY"
+ },
+ "white cube new york": {
+  "title": "White Cube New York",
+  "lists": [
+   "art galleries"
+  ],
+  "category": "art galleries",
+  "status": "ok",
+  "lat": 40.775528,
+  "lng": -73.963035,
+  "fbid": 6829945200404638,
+  "source": "search-exact-location",
+  "address": "1002 Madison Ave, New York, NY"
+ },
+ "alexander berggruen": {
+  "title": "Alexander Berggruen",
+  "lists": [
+   "art galleries"
+  ],
+  "category": "art galleries",
+  "status": "ok",
+  "lat": 40.775975,
+  "lng": -73.962477,
+  "fbid": 948567000281344,
+  "source": "search-exact-location",
+  "address": "1018 Madison Ave Fl 3, New York, NY"
+ },
+ "arader galleries": {
+  "title": "Arader Galleries",
+  "lists": [
+   "art galleries"
+  ],
+  "category": "art galleries",
+  "status": "ok",
+  "lat": 40.775906,
+  "lng": -73.962612,
+  "fbid": 5549503345106926,
+  "source": "search-exact-location",
+  "address": "1016 Madison Ave, New York, NY"
+ },
+ "tambaran gallery": {
+  "title": "Tambaran Gallery",
+  "lists": [
+   "art galleries"
+  ],
+  "category": "art galleries",
+  "status": "ok",
+  "lat": 40.778723,
+  "lng": -73.961457,
+  "fbid": 595005738820339,
+  "source": "search-exact-location",
+  "address": "5 E 82nd St, New York, NY"
+ },
+ "skarstedt gallery": {
+  "title": "Skarstedt Gallery",
+  "lists": [
+   "art galleries",
+   "nyc"
+  ],
+  "category": "art galleries",
+  "status": "ok",
+  "lat": 40.77629,
+  "lng": -73.962479,
+  "fbid": 776772193516109,
+  "source": "search-exact-location",
+  "address": "20 E 79th St, New York, NY"
+ },
+ "mnuchin gallery": {
+  "title": "Mnuchin Gallery",
+  "lists": [
+   "art galleries"
+  ],
+  "category": "art galleries",
+  "status": "ok",
+  "lat": 40.775533,
+  "lng": -73.962095,
+  "fbid": 1120526491904089,
+  "source": "search-exact-location",
+  "address": "45 E 78th St, New York, NY",
+  "note": "record says permanently closed"
+ },
+ "acquavella galleries": {
+  "title": "Acquavella Galleries",
+  "lists": [
+   "art galleries"
+  ],
+  "category": "art galleries",
+  "status": "ok",
+  "lat": 40.7764,
+  "lng": -73.9626,
+  "fbid": null,
+  "source": "search-web-evidence",
+  "address": "18 East 79th St, New York, NY",
+  "note": "no FBID in results; GPS from aroundus.com listing, corroborated by trek.zone DMS for same address"
+ },
+ "the drawing center": {
+  "title": "The Drawing Center",
+  "lists": [
+   "art galleries"
+  ],
+  "category": "art galleries",
+  "status": "ok",
+  "lat": 40.722361,
+  "lng": -74.002789,
+  "fbid": 1983507318513795,
+  "source": "search-exact-location",
+  "address": "35 Wooster St, New York, NY"
+ },
+ "jack shainman gallery": {
+  "title": "Jack Shainman Gallery",
+  "lists": [
+   "art galleries"
+  ],
+  "category": "art galleries",
+  "status": "ok",
+  "lat": 40.746256,
+  "lng": -74.00629,
+  "fbid": 3330341900582868,
+  "source": "search-exact-location",
+  "address": "513 W 20th St, New York, NY",
+  "note": "second location exists: 46 Lafayette St flagship (FBID 3508058096073250, 40.715955,-74.002882)"
+ },
+ "japan society": {
+  "title": "Japan Society",
+  "lists": [
+   "art galleries"
+  ],
+  "category": "art galleries",
+  "status": "ok",
+  "lat": 40.752446,
+  "lng": -73.968313,
+  "fbid": 474790154009194,
+  "source": "search-exact-location",
+  "address": "333 E 47th St, New York, NY"
+ },
+ "dia chelsea": {
+  "title": "Dia Chelsea",
+  "lists": [
+   "art galleries"
+  ],
+  "category": "art galleries",
+  "status": "ok",
+  "lat": 40.747806,
+  "lng": -74.006321,
+  "fbid": 273984872299134,
+  "source": "search-exact-location",
+  "address": "535 W 22nd St, New York, NY",
+  "note": "record name: Dia Art Foundation (Dia Chelsea)"
+ },
+ "sikkema malloy jenkins": {
+  "title": "Sikkema Malloy Jenkins",
+  "lists": [
+   "art galleries"
+  ],
+  "category": "art galleries",
+  "status": "ok",
+  "lat": 40.747485,
+  "lng": -74.006065,
+  "fbid": 1293446277858585,
+  "source": "search-exact-location",
+  "address": "530 W 22nd St, New York, NY"
+ },
+ "hauser & wirth": {
+  "title": "Hauser & Wirth",
+  "lists": [
+   "art galleries",
+   "nyc"
+  ],
+  "category": "art galleries",
+  "status": "ok",
+  "lat": 40.747757,
+  "lng": -74.006667,
+  "fbid": 748903342832255,
+  "source": "search-exact-location",
+  "address": "548 W 22nd St, New York, NY"
+ },
+ "garth greenan gallery": {
+  "title": "Garth Greenan Gallery",
+  "lists": [
+   "art galleries"
+  ],
+  "category": "art galleries",
+  "status": "ok",
+  "lat": 40.721263,
+  "lng": -74.002816,
+  "fbid": 1059990108811476,
+  "source": "search-exact-location",
+  "address": "25 Greene St, New York, NY"
+ },
+ "andrew kreps gallery": {
+  "title": "Andrew Kreps Gallery",
+  "lists": [
+   "art galleries"
+  ],
+  "category": "art galleries",
+  "status": "ok",
+  "lat": 40.718322,
+  "lng": -74.002243,
+  "fbid": 3239649296309470,
+  "source": "search-exact-location",
+  "address": "22 Cortlandt Aly, New York, NY"
+ },
+ "nino mier gallery": {
+  "title": "Nino Mier Gallery",
+  "lists": [
+   "art galleries",
+   "nyc"
+  ],
+  "category": "art galleries",
+  "status": "ok",
+  "lat": 40.717914,
+  "lng": -74.002681,
+  "fbid": 1276715466318650,
+  "source": "search-exact-location",
+  "address": "380 Broadway, New York, NY",
+  "note": "Tribeca location; second NYC location SoHo 62 Crosby St (FBID 591613863167047)"
+ },
+ "yossi milo gallery": {
+  "title": "Yossi Milo Gallery",
+  "lists": [
+   "art galleries"
+  ],
+  "category": "art galleries",
+  "status": "ok",
+  "lat": 40.748737,
+  "lng": -74.003521,
+  "fbid": 748782626236894,
+  "source": "search-exact-location",
+  "address": "245 10th Ave, New York, NY"
+ },
+ "gagosian": {
+  "title": "Gagosian",
+  "lists": [
+   "art galleries"
+  ],
+  "category": "art galleries",
+  "status": "ok",
+  "lat": 40.774726,
+  "lng": -73.963544,
+  "fbid": 437671128409276,
+  "source": "search-exact-location",
+  "address": "980 Madison Ave, New York, NY"
+ },
+ "salon 94": {
+  "title": "Salon 94",
+  "lists": [
+   "art galleries"
+  ],
+  "category": "art galleries",
+  "status": "ok",
+  "lat": 40.783336,
+  "lng": -73.958405,
+  "fbid": 579578543823919,
+  "source": "search-exact-location",
+  "address": "3 E 89th St, New York, NY"
+ },
+ "revolution books": {
+  "title": "Revolution Books",
+  "lists": [
+   "bookstore",
+   "nyc"
+  ],
+  "category": "bookstores",
+  "status": "ok",
+  "lat": 40.812255,
+  "lng": -73.942583,
+  "fbid": 609226090616888,
+  "source": "search-exact-location",
+  "address": "437 Malcolm X Blvd, New York, NY"
+ },
+ "clown show prison books and fine objects": {
+  "title": "Clown Show Prison Books and Fine Objects",
+  "lists": [
+   "bookstore"
+  ],
+  "category": "bookstores",
+  "status": "ok",
+  "lat": 40.734071,
+  "lng": -73.957584,
+  "fbid": 1175025134256367,
+  "source": "search-exact-location",
+  "address": "100 Freeman St, Brooklyn, NY"
+ },
+ "mcnally jackson books soho": {
+  "title": "McNally Jackson Books SoHo",
+  "lists": [
+   "bookstore"
+  ],
+  "category": "bookstores",
+  "status": "fail",
+  "source": "search-no-structured-block",
+  "address": "134 Prince St, New York, NY 10012",
+  "notes": "address confirmed in multiple sources; no Exact Location block returned on retry"
+ },
+ "black spring books": {
+  "title": "Black Spring Books",
+  "lists": [
+   "bookstore"
+  ],
+  "category": "bookstores",
+  "status": "ok",
+  "lat": 40.714465,
+  "lng": -73.959443,
+  "fbid": 3398441403765130,
+  "source": "search-exact-location",
+  "address": "672 Driggs Ave, Brooklyn, NY"
+ },
+ "192 books": {
+  "title": "192 Books",
+  "lists": [
+   "bookstore"
+  ],
+  "category": "bookstores",
+  "status": "ok",
+  "lat": 40.746619,
+  "lng": -74.004786,
+  "fbid": 5307688602648913,
+  "source": "search-exact-location",
+  "address": "192 10th Ave, New York, NY"
+ },
+ "brooklyn film camera": {
+  "title": "Brooklyn Film Camera",
+  "lists": [
+   "cameras"
+  ],
+  "category": "cameras",
+  "status": "ok",
+  "lat": 40.712322,
+  "lng": -73.939609,
+  "fbid": 1897760540424591,
+  "source": "search-exact-location",
+  "address": "855 Grand St, Brooklyn, NY"
+ },
+ "k&m camera": {
+  "title": "K&M Camera",
+  "lists": [
+   "cameras"
+  ],
+  "category": "cameras",
+  "status": "ok",
+  "lat": 40.716645,
+  "lng": -73.990915,
+  "fbid": 3680323185580028,
+  "source": "search-exact-location",
+  "address": "54 Orchard St, New York, NY",
+  "note": "record name: K&M Rentals (same business, kmcamera.com, current storefront)"
+ },
+ "bushwick market": {
+  "title": "Bushwick Market",
+  "lists": [
+   "cameras",
+   "thrift"
+  ],
+  "category": "cameras",
+  "status": "ok",
+  "lat": 40.705527,
+  "lng": -73.921284,
+  "fbid": 598705831703932,
+  "source": "search-exact-location",
+  "address": "54 Wyckoff Ave, Brooklyn, NY"
+ },
+ "photodom. nyc": {
+  "title": "photodom. NYC",
+  "lists": [
+   "cameras"
+  ],
+  "category": "cameras",
+  "status": "ok",
+  "lat": 40.683474,
+  "lng": -73.911213,
+  "fbid": null,
+  "source": "search-web-evidence",
+  "address": "1717 Broadway #310, Brooklyn, NY",
+  "note": "no structured record in results; coordinates from Wikipedia infobox HQ for 1717 Broadway, Brooklyn"
+ },
+ "787 coffee": {
+  "title": "787 Coffee",
+  "lists": [
+   "coffee writing",
+   "nyc"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.7422,
+  "lng": -73.983168,
+  "fbid": 1464292030709661,
+  "source": "search-exact-location",
+  "address": "100 Lexington Ave, New York, NY",
+  "note": "chain with many NYC locations; first structured record used"
+ },
+ "proof coffee roasters": {
+  "title": "PROOF Coffee Roasters",
+  "lists": [
+   "coffee writing",
+   "nyc"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.814932,
+  "lng": -73.944216,
+  "fbid": 577858943805220,
+  "source": "search-exact-location",
+  "address": "2286 Adam Clayton Powell Jr Blvd, New York, NY",
+  "note": "record says permanently closed; second location 335 E 27th St (40.739884,-73.977438)"
+ },
+ "claire's kitchen cafe": {
+  "title": "Claire's Kitchen Cafe",
+  "lists": [
+   "coffee writing",
+   "nyc"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.799055,
+  "lng": -73.96099,
+  "fbid": 1567672143957436,
+  "source": "search-exact-location",
+  "address": "150 Manhattan Ave, New York, NY",
+  "note": "chain; other locations 1374 York Ave and 19 St Nicholas Ave"
+ },
+ "levain bakery": {
+  "title": "Levain Bakery",
+  "lists": [
+   "coffee writing",
+   "nyc"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.777365,
+  "lng": -73.955187,
+  "fbid": 3227051787580579,
+  "source": "search-exact-location",
+  "address": "1484 3rd Ave, New York, NY",
+  "note": "chain; original location 167 W 74th St (40.7799,-73.980351)"
+ },
+ "kaafi by chaiguy": {
+  "title": "Kaafi by Chaiguy",
+  "lists": [
+   "coffee writing",
+   "nyc"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.803846,
+  "lng": -73.948683,
+  "fbid": 2646132528924827,
+  "source": "search-exact-location",
+  "address": "171 Malcolm X Blvd (171 Lenox Ave), New York, NY 10026"
+ },
+ "1927 cafe bar popularr": {
+  "title": "1927 Cafe Bar Popularr",
+  "lists": [
+   "coffee writing",
+   "nyc"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.799826,
+  "lng": -73.95263,
+  "fbid": 3456200364608889,
+  "source": "search-exact-location",
+  "address": "19 St Nicholas Ave, New York, NY"
+ },
+ "alke café": {
+  "title": "Alke Café",
+  "lists": [
+   "coffee writing",
+   "nyc"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.800378,
+  "lng": -73.955066,
+  "fbid": 1158885431816387,
+  "source": "search-exact-location",
+  "address": "1838 Adam Clayton Powell Jr Blvd, New York, NY"
+ },
+ "il caffe latte": {
+  "title": "Il Caffe Latte",
+  "lists": [
+   "coffee writing",
+   "nyc"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.804336,
+  "lng": -73.948257,
+  "fbid": 737688380865460,
+  "source": "search-exact-location",
+  "address": "189 Malcolm X Blvd #1, New York, NY",
+  "note": "second location 458 W 145th St permanently closed"
+ },
+ "sojourner coffee": {
+  "title": "Sojourner Coffee",
+  "lists": [
+   "coffee writing",
+   "nyc"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.802919,
+  "lng": -73.951179,
+  "fbid": 758798381907922,
+  "source": "search-exact-location",
+  "address": "137 W 116th St, New York, NY"
+ },
+ "pastitalia": {
+  "title": "Pastitalia",
+  "lists": [
+   "coffee writing",
+   "nyc"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.806572,
+  "lng": -73.946074,
+  "fbid": 572384344559575,
+  "source": "search-exact-location",
+  "address": "264 Lenox Ave, New York, NY",
+  "note": "announced closure on its social channels in fall 2026"
+ },
+ "superhet coffee": {
+  "title": "Superhet Coffee",
+  "lists": [
+   "coffee writing",
+   "nyc"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.805352,
+  "lng": -73.956383,
+  "fbid": 1139625590947434,
+  "source": "search-exact-location",
+  "address": "390 Manhattan Ave, New York, NY"
+ },
+ "the cart": {
+  "title": "The Cart",
+  "lists": [
+   "coffee writing",
+   "nyc"
+  ],
+  "category": "coffee & writing",
+  "status": "fail",
+  "source": "search-ambiguous",
+  "notes": "no identifiable NYC venue named The Cart found on retry"
+ },
+ "ganache coffee": {
+  "title": "Ganache Coffee",
+  "lists": [
+   "coffee writing",
+   "nyc"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.806783,
+  "lng": -73.953901,
+  "fbid": 352898910380568,
+  "source": "search-exact-location",
+  "address": "2219 Frederick Douglass Blvd, New York, NY"
+ },
+ "l.a sweets": {
+  "title": "L.A Sweets",
+  "lists": [
+   "coffee writing",
+   "nyc"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.809623,
+  "lng": -73.94946,
+  "fbid": 977740308141379,
+  "source": "search-exact-location",
+  "address": "219 W 125th St, New York, NY",
+  "note": "second/125th St location record used; original shop at 192 Lenox Ave"
+ },
+ "double dutch espresso": {
+  "title": "Double Dutch Espresso",
+  "lists": [
+   "coffee writing",
+   "nyc"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.805896,
+  "lng": -73.954135,
+  "fbid": 2025858470918993,
+  "source": "search-exact-location",
+  "address": "2194 Frederick Douglass Blvd, New York, NY",
+  "note": "second location 1616 Amsterdam Ave permanently closed"
+ },
+ "patisserie des ambassades": {
+  "title": "PATISSERIE DES AMBASSADES",
+  "lists": [
+   "coffee writing",
+   "nyc"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.806066,
+  "lng": -73.953933,
+  "fbid": 3352437218319653,
+  "source": "search-exact-location",
+  "address": "2190 Frederick Douglass Blvd, New York, NY"
+ },
+ "uptaco west harlem": {
+  "title": "Uptaco West Harlem",
+  "lists": [
+   "coffee writing",
+   "nyc"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.816635,
+  "lng": -73.947382,
+  "fbid": 1005429837915368,
+  "source": "search-exact-location",
+  "address": "300 W 135th St, New York, NY",
+  "note": "record name: Uptaco Breakfast Tacos (West Harlem location)"
+ },
+ "i like it black": {
+  "title": "I Like It Black",
+  "lists": [
+   "coffee writing",
+   "nyc"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.811721,
+  "lng": -73.954546,
+  "fbid": 621397975977782,
+  "source": "search-exact-location",
+  "address": "409 W 125th St, New York, NY"
+ },
+ "make my cake": {
+  "title": "Make My Cake",
+  "lists": [
+   "coffee writing"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.811794,
+  "lng": -73.954527,
+  "fbid": 5672969202747937,
+  "source": "search-structured",
+  "address": "409 W 125th St, New York, NY",
+  "note": "chain; other locations 2380 Adam Clayton Powell Jr Blvd, 775 Columbus Ave"
+ },
+ "plowshares coffee roasters": {
+  "title": "Plowshares Coffee Roasters",
+  "lists": [
+   "coffee writing",
+   "nyc"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.813761,
+  "lng": -73.955767,
+  "fbid": 3215506032062754,
+  "source": "search-structured",
+  "address": "1351 Amsterdam Ave, New York, NY 10027",
+  "note": "second location 2730 Broadway"
+ },
+ "grand morelos": {
+  "title": "Grand Morelos",
+  "lists": [
+   "coffee writing"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.711741,
+  "lng": -73.943662,
+  "fbid": 713014966754992,
+  "source": "search-structured",
+  "address": "727 Grand St, Brooklyn, NY 11211"
+ },
+ "kinokuniya new york": {
+  "title": "Kinokuniya New York",
+  "lists": [
+   "coffee writing"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.754063,
+  "lng": -73.984927,
+  "fbid": 606815270883879,
+  "source": "search-structured",
+  "address": "1073 6th Ave, New York, NY 10018"
+ },
+ "the plug": {
+  "title": "The Plug",
+  "lists": [
+   "coffee writing"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.839431,
+  "lng": -73.937927,
+  "fbid": 209526698699248,
+  "source": "search-structured",
+  "address": "502 W 167th St, New York, NY 10032"
+ },
+ "salento": {
+  "title": "Salento",
+  "lists": [
+   "coffee writing"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.837831,
+  "lng": -73.938567,
+  "fbid": 3243333399259737,
+  "source": "search-structured",
+  "address": "2112 Amsterdam Ave, New York, NY 10032",
+  "note": "second location 132 Hamilton Pl (40.82408,-73.949173)"
+ },
+ "still life": {
+  "title": "Still Life",
+  "lists": [
+   "coffee writing"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.679375,
+  "lng": -73.985376,
+  "fbid": 2319081255160947,
+  "source": "search-structured",
+  "address": "573 Sackett St, Brooklyn, NY"
+ },
+ "saint street cakes": {
+  "title": "Saint Street Cakes",
+  "lists": [
+   "coffee writing"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.686899,
+  "lng": -73.974705,
+  "fbid": 746910631067215,
+  "source": "search-structured",
+  "address": "86 S Portland Ave, Brooklyn, NY 11217"
+ },
+ "thea": {
+  "title": "Thea",
+  "lists": [
+   "coffee writing"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.686048,
+  "lng": -73.972664,
+  "fbid": 1253418552772506,
+  "source": "search-structured",
+  "address": "17 Greene Ave, Brooklyn, NY 11238"
+ },
+ "dayglow": {
+  "title": "Dayglow",
+  "lists": [
+   "coffee writing"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.703544,
+  "lng": -73.930961,
+  "fbid": 388384674196628,
+  "source": "search-structured",
+  "address": "8 Wilson Ave, Brooklyn, NY 11237",
+  "note": "Bushwick location; structured record on first search was West Hollywood CA"
+ },
+ "gem home": {
+  "title": "Gem Home",
+  "lists": [
+   "coffee writing"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.720696,
+  "lng": -73.996084,
+  "fbid": 578728514966964,
+  "source": "search-structured",
+  "address": "181 Mott St, New York, NY 10012"
+ },
+ "hien from vietnam": {
+  "title": "HIEN FROM VIETNAM",
+  "lists": [
+   "coffee writing"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.718018,
+  "lng": -73.997152,
+  "fbid": 3071928296308758,
+  "source": "search-exact-location",
+  "address": "121 Mott St, New York, NY"
+ },
+ "park at kims": {
+  "title": "PARK at KIMS",
+  "lists": [
+   "coffee writing"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.719274,
+  "lng": -73.995613,
+  "fbid": 780048984478364,
+  "source": "search-structured",
+  "address": "119 Elizabeth St, New York, NY 10013"
+ },
+ "quarters": {
+  "title": "Quarters",
+  "lists": [
+   "coffee writing",
+   "nyc"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.718202,
+  "lng": -74.003075,
+  "fbid": 2660216680817436,
+  "source": "search-structured",
+  "address": "383 Broadway 2nd Floor, New York, NY 10013"
+ },
+ "derby cup coffee": {
+  "title": "Derby Cup Coffee",
+  "lists": [
+   "coffee writing"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.716827,
+  "lng": -73.996923,
+  "fbid": 859343973407778,
+  "source": "search-structured",
+  "address": "37 Elizabeth St, New York, NY"
+ },
+ "bibliotheque": {
+  "title": "Bibliotheque",
+  "lists": [
+   "coffee writing"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.721805,
+  "lng": -74.000749,
+  "fbid": 1968023526945732,
+  "source": "search-structured",
+  "address": "54 Mercer St, New York, NY 10013"
+ },
+ "queens public library at hunters point": {
+  "title": "Queens Public Library at Hunters Point",
+  "lists": [
+   "coffee writing"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.745296,
+  "lng": -73.957975,
+  "fbid": 1018963618801647,
+  "source": "search-structured",
+  "address": "47-40 Center Blvd, Long Island City, NY 11109"
+ },
+ "the clock coffee shop": {
+  "title": "The Clock Coffee Shop",
+  "lists": [
+   "coffee writing"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.753498,
+  "lng": -73.978348,
+  "fbid": 1447796979284532,
+  "source": "search-structured",
+  "address": "335 Madison Ave, New York, NY 10017"
+ },
+ "georgie’s cafe & bar": {
+  "title": "Georgie’s Cafe & Bar",
+  "lists": [
+   "coffee writing"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.717077,
+  "lng": -73.986423,
+  "fbid": 661153103303922,
+  "source": "search-structured",
+  "address": "182 Broome St 2nd Fl, New York, NY"
+ },
+ "mcnally jackson books seaport": {
+  "title": "McNally Jackson Books Seaport",
+  "lists": [
+   "coffee writing"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.706412,
+  "lng": -74.003517,
+  "fbid": 821428682357118,
+  "source": "search-structured",
+  "address": "4 Fulton St, New York, NY 10038"
+ },
+ "the new york public library for the performing arts, dorothy and lewis b. cullman center": {
+  "title": "The New York Public Library for the Performing Arts, Dorothy and Lewis B. Cullman Center",
+  "lists": [
+   "coffee writing"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.772831,
+  "lng": -73.984238,
+  "source": "search-web-evidence",
+  "address": "40 Lincoln Center Plaza, New York, NY 10023",
+  "note": "coordinates from Wikipedia GPS listing"
+ },
+ "oi bozu": {
+  "title": "Oi bozu",
+  "lists": [
+   "coffee writing"
+  ],
+  "category": "coffee & writing",
+  "status": "fail",
+  "source": "search-no-structured-block",
+  "address": "177 Ludlow St, New York, NY 10002",
+  "notes": "address confirmed (LES, ex-BBF space); no Exact Location block returned on retry; may be permanently closed"
+ },
+ "frame coffee": {
+  "title": "Frame Coffee",
+  "lists": [
+   "coffee writing"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.780054,
+  "lng": -73.980314,
+  "fbid": 3528573310714500,
+  "source": "search-structured",
+  "address": "305 Amsterdam Ave, New York, NY 10023",
+  "note": "other locations 1413 2nd Ave, 2459 Broadway"
+ },
+ "cha-an": {
+  "title": "Cha-An",
+  "lists": [
+   "coffee writing"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.729471,
+  "lng": -73.988136,
+  "fbid": 1030205747679040,
+  "source": "search-structured",
+  "address": "230 E 9th St 2nd FL, New York, NY 10003"
+ },
+ "dialogue coffee & flowers": {
+  "title": "Dialogue Coffee & Flowers",
+  "lists": [
+   "coffee writing"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.721943,
+  "lng": -73.988592,
+  "fbid": 520850073839954,
+  "source": "search-structured",
+  "address": "188 Allen St, New York, NY 10002"
+ },
+ "lazy suzy cafe & shop": {
+  "title": "Lazy Suzy Cafe & Shop",
+  "lists": [
+   "coffee writing"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.699415,
+  "lng": -73.925385,
+  "fbid": 787957422202551,
+  "source": "search-structured",
+  "address": "703 Hart St, Brooklyn, NY 11221"
+ },
+ "cafe msmn": {
+  "title": "Cafe MSMN",
+  "lists": [
+   "coffee writing"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.71994,
+  "lng": -73.94602,
+  "fbid": 1409731579906829,
+  "source": "search-structured",
+  "address": "150 Bayard St Store 1, Brooklyn, NY 11222"
+ },
+ "the lost draft": {
+  "title": "The Lost Draft",
+  "lists": [
+   "coffee writing"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.720797,
+  "lng": -73.997254,
+  "fbid": 514315290454067,
+  "source": "search-structured",
+  "address": "398 Broome St, New York, NY 10013"
+ },
+ "the mandarin": {
+  "title": "The Mandarin",
+  "lists": [
+   "coffee writing"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.712379,
+  "lng": -73.994709,
+  "fbid": 2159912737756908,
+  "source": "search-structured",
+  "address": "113 Madison St, New York, NY 10002"
+ },
+ "jefferson market library": {
+  "title": "Jefferson Market Library",
+  "lists": [
+   "coffee writing"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.734607,
+  "lng": -73.999131,
+  "fbid": 1691242001254478,
+  "source": "search-structured",
+  "address": "425 6th Ave, New York, NY 10011"
+ },
+ "manjul coffee & clothing": {
+  "title": "Manjul Coffee & Clothing",
+  "lists": [
+   "coffee writing"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.719446,
+  "lng": -74.000848,
+  "fbid": 1560802787958809,
+  "source": "search-structured",
+  "address": "31 Howard St, New York, NY"
+ },
+ "stavros niarchos foundation library (snfl)": {
+  "title": "Stavros Niarchos Foundation Library (SNFL)",
+  "lists": [
+   "coffee writing"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.75206,
+  "lng": -73.98189,
+  "source": "search-web-evidence",
+  "address": "455 Fifth Avenue, New York, NY 10016",
+  "note": "GPS coordinates from aroundus/Wikipedia-derived listing"
+ },
+ "the monroe": {
+  "title": "The Monroe",
+  "lists": [
+   "coffee writing"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.711782,
+  "lng": -73.993728,
+  "fbid": 1116110206874328,
+  "source": "search-structured",
+  "address": "49 Monroe St, New York, NY 10002",
+  "note": "record lists permanently closed"
+ },
+ "red coffee stand": {
+  "title": "Red Coffee Stand",
+  "lists": [
+   "coffee writing",
+   "nyc"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.702544,
+  "lng": -73.987088,
+  "fbid": 1274841453628766,
+  "source": "search-structured",
+  "address": "147 Front St, Brooklyn, NY 11201"
+ },
+ "saturn road": {
+  "title": "Saturn Road",
+  "lists": [
+   "coffee writing"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.684744,
+  "lng": -73.994999,
+  "fbid": 1541326556745956,
+  "source": "search-structured",
+  "address": "276 Court St, Brooklyn, NY 11231"
+ },
+ "café-flor / bar 21": {
+  "title": "Café-Flor / Bar 21",
+  "lists": [
+   "coffee writing"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.744064,
+  "lng": -73.999125,
+  "fbid": 7834620423312967,
+  "source": "search-structured",
+  "address": "218 8th Ave, New York, NY 10011"
+ },
+ "mokafé": {
+  "title": "MOKAFÉ",
+  "lists": [
+   "coffee writing"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.766026,
+  "lng": -73.912953,
+  "fbid": 1106028687177103,
+  "source": "search-structured",
+  "address": "25-73 Steinway St, Astoria, NY 11103",
+  "note": "original Astoria location; others in Greenpoint and Midtown"
+ },
+ "sippy cafe": {
+  "title": "Sippy Cafe",
+  "lists": [
+   "coffee writing"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.693551,
+  "lng": -73.992136,
+  "fbid": 598342018483646,
+  "source": "search-structured",
+  "address": "153 Remsen St, Brooklyn, NY 11201"
+ },
+ "for the record": {
+  "title": "For The Record",
+  "lists": [
+   "coffee writing"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.736313,
+  "lng": -73.95538,
+  "fbid": 5195595300508574,
+  "source": "search-structured",
+  "address": "1107 Manhattan Ave, Brooklyn, NY 11222"
+ },
+ "coffee check": {
+  "title": "Coffee Check",
+  "lists": [
+   "coffee writing"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.733415,
+  "lng": -73.959324,
+  "fbid": 399161626609812,
+  "source": "search-structured",
+  "address": "65 Green St, Brooklyn, NY 11222"
+ },
+ "sweetleaf coffee roasters": {
+  "title": "Sweetleaf Coffee Roasters",
+  "lists": [
+   "coffee writing"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.734489,
+  "lng": -73.955368,
+  "fbid": 1517223658696719,
+  "source": "search-structured",
+  "address": "159 Freeman St, Brooklyn, NY 11222",
+  "note": "Greenpoint roastery; other locations in LIC"
+ },
+ "sweetleaf coffee & cocktail bar": {
+  "title": "Sweetleaf Coffee & Cocktail Bar",
+  "lists": [
+   "coffee writing"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.747197,
+  "lng": -73.956135,
+  "fbid": 9271549352861509,
+  "source": "search-structured",
+  "address": "46-15 Center Blvd, Long Island City, NY 11109"
+ },
+ "madame bonté café": {
+  "title": "Madame Bonté Café",
+  "lists": [
+   "coffee writing"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.783344,
+  "lng": -73.947515,
+  "fbid": 808262543694322,
+  "source": "search-structured",
+  "address": "1834 2nd Ave, New York, NY 10128",
+  "note": "also 205 E 66th St and wine bar at 318 E 84th St"
+ },
+ "stella & fly": {
+  "title": "Stella & Fly",
+  "lists": [
+   "coffee writing"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.778493,
+  "lng": -73.948414,
+  "fbid": 1990520621132224,
+  "source": "search-structured",
+  "address": "1705 1st Ave, New York, NY 10128",
+  "note": "record lists permanently closed"
+ },
+ "mellow yellow": {
+  "title": "Mellow Yellow",
+  "lists": [
+   "coffee writing"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.779223,
+  "lng": -73.947842,
+  "fbid": 1748945025443627,
+  "source": "search-structured",
+  "address": "1729 1st Ave, New York, NY 10128"
+ },
+ "l'avion café": {
+  "title": "L'avion Café",
+  "lists": [
+   "coffee writing"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.780837,
+  "lng": -73.947626,
+  "fbid": 950617810055531,
+  "source": "search-structured",
+  "address": "338 E 92nd St, New York, NY 10128"
+ },
+ "verse": {
+  "title": "Verse",
+  "lists": [
+   "coffee writing"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.770817,
+  "lng": -73.920129,
+  "fbid": 896393099261298,
+  "source": "search-structured",
+  "address": "28-13 Astoria Blvd, Astoria, NY 11102"
+ },
+ "coffee pro": {
+  "title": "Coffee Pro",
+  "lists": [
+   "coffee writing"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.771701,
+  "lng": -73.923046,
+  "fbid": 507309871894345,
+  "source": "search-structured",
+  "address": "23-33 Astoria Blvd, Astoria, NY 11102"
+ },
+ "hashtag cafe (#)": {
+  "title": "Hashtag Cafe (#)",
+  "lists": [
+   "coffee writing"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.763049,
+  "lng": -73.928554,
+  "fbid": 1537353874144224,
+  "source": "search-structured",
+  "address": "32-09 Crescent St, Astoria, NY 11105"
+ },
+ "coffee cloud": {
+  "title": "Coffee Cloud",
+  "lists": [
+   "coffee writing"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.764539,
+  "lng": -73.930613,
+  "fbid": 1125932428332499,
+  "source": "search-structured",
+  "address": "21-34 Broadway, Astoria, NY 11106",
+  "note": "second location in Briarwood, Queens"
+ },
+ "olive coffee": {
+  "title": "Olive Coffee",
+  "lists": [
+   "coffee writing"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.767071,
+  "lng": -73.922512,
+  "fbid": 1502827126932455,
+  "source": "search-structured",
+  "address": "30-04 30th St, Astoria, NY 11105"
+ },
+ "qahwa roots café": {
+  "title": "Qahwa Roots Café",
+  "lists": [
+   "coffee writing"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.636426,
+  "lng": -74.02603,
+  "fbid": 1464589771182942,
+  "source": "search-structured",
+  "address": "6812 3rd Ave, Brooklyn, NY 11220",
+  "note": "record lists permanently closed"
+ },
+ "mazaji": {
+  "title": "Mazaji",
+  "lists": [
+   "coffee writing"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.632224,
+  "lng": -74.027281,
+  "fbid": 1101026361738135,
+  "source": "search-structured",
+  "address": "7323 3rd Ave, Brooklyn, NY 11209"
+ },
+ "healing bean cafe | arts and coffee": {
+  "title": "Healing Bean Cafe | Arts and Coffee",
+  "lists": [
+   "coffee writing"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.628406,
+  "lng": -74.029142,
+  "fbid": 875781350799031,
+  "source": "search-structured",
+  "address": "7904 3rd Ave, Brooklyn, NY 11209"
+ },
+ "bilqis coffee": {
+  "title": "Bilqis Coffee",
+  "lists": [
+   "coffee writing"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.62548,
+  "lng": -74.024579,
+  "fbid": 1882722352221798,
+  "source": "search-structured",
+  "address": "8018 5th Ave, Brooklyn, NY 11209"
+ },
+ "qahwah house": {
+  "title": "Qahwah House",
+  "lists": [
+   "coffee writing"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.718535,
+  "lng": -73.957126,
+  "fbid": 576149650827592,
+  "source": "search-structured",
+  "address": "162 Bedford Ave, Brooklyn, NY 11211",
+  "note": "Williamsburg location; others incl. West Village 13 Carmine St"
+ },
+ "variety coffee": {
+  "title": "Variety Coffee",
+  "lists": [
+   "coffee writing"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.723192,
+  "lng": -73.944182,
+  "fbid": 792595208823117,
+  "source": "search-structured",
+  "address": "142 Driggs Ave, Brooklyn, NY 11222",
+  "note": "Greenpoint location; 10 cafes across NYC"
+ },
+ "cuppa hive coffee": {
+  "title": "Cuppa Hive Coffee",
+  "lists": [
+   "coffee writing"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.661892,
+  "lng": -73.981958,
+  "fbid": 7627070393999379,
+  "source": "search-exact-location",
+  "address": "428 15th St, Brooklyn, NY",
+  "notes": "second location: 689 5th Ave, Brooklyn (40.661361, -73.993232)"
+ },
+ "enso cafe": {
+  "title": "Enso Cafe",
+  "lists": [
+   "coffee writing"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.675737,
+  "lng": -73.980539,
+  "fbid": 591029895928457,
+  "source": "search-exact-location",
+  "address": "665 President St, Brooklyn, NY",
+  "notes": "second location: 192 Amity St, Brooklyn (40.688326, -73.993432)"
+ },
+ "velvette brew": {
+  "title": "Velvette Brew",
+  "lists": [
+   "coffee writing"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.673874,
+  "lng": -73.982144,
+  "fbid": 1090300654905398,
+  "source": "search-exact-location",
+  "address": "279 5th Ave, Brooklyn, NY"
+ },
+ "casita of brooklyn": {
+  "title": "Casita of Brooklyn",
+  "lists": [
+   "coffee writing"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.668075,
+  "lng": -73.987747,
+  "fbid": 1492373074557490,
+  "source": "search-exact-location",
+  "address": "318 11th St, Brooklyn, NY",
+  "notes": "other locations: 300 E 86th St, NY (40.777625, -73.951578); Staten Island (40.593875, -74.099437)"
+ },
+ "cute cafe": {
+  "title": "Cute Cafe",
+  "lists": [
+   "coffee writing"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.706814,
+  "lng": -73.897017,
+  "fbid": 1279982482766503,
+  "source": "search-exact-location",
+  "address": "66-69 Fresh Pond Rd, Ridgewood, NY 11385",
+  "notes": "listed as Cute Cat Cafe; aka Cute Cafe per Wanderlog"
+ },
+ "katan": {
+  "title": "Katan",
+  "lists": [
+   "coffee writing"
+  ],
+  "category": "coffee & writing",
+  "status": "fail",
+  "source": "search-no-structured-block",
+  "address": "490 Grandview Ave, Queens, NY 11385",
+  "notes": "Ridgewood cafe; no Exact Location block returned"
+ },
+ "c.lo cafe": {
+  "title": "C.Lo Cafe",
+  "lists": [
+   "coffee writing"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.706354,
+  "lng": -73.905444,
+  "fbid": 1064026800922714,
+  "source": "search-exact-location",
+  "address": "660 Fairview Ave, Ridgewood, NY"
+ },
+ "sieve cafe: matcha & coffee": {
+  "title": "Sieve Cafe: Matcha & Coffee",
+  "lists": [
+   "coffee writing"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.702263,
+  "lng": -73.906566,
+  "fbid": 1282253846982758,
+  "source": "search-exact-location",
+  "address": "7-57 Seneca Ave, Ridgewood, NY"
+ },
+ "nomad cafe and eatery": {
+  "title": "Nomad Cafe and Eatery",
+  "lists": [
+   "coffee writing"
+  ],
+  "category": "coffee & writing",
+  "status": "ok",
+  "lat": 40.703976,
+  "lng": -73.901839,
+  "fbid": 1940336816174239,
+  "source": "search-exact-location",
+  "address": "67-14 Forest Ave, Ridgewood, NY"
+ },
+ "marlton espresso bar": {
+  "title": "Marlton Espresso Bar",
+  "lists": [
+   "coffee writing"
+  ],
+  "category": "coffee & writing",
+  "status": "fail",
+  "source": "search-no-structured-block",
+  "address": "5 W 8th St, New York, NY 10011",
+  "notes": "Marlton Hotel lobby, Greenwich Village; no Exact Location block returned"
+ }
+}
