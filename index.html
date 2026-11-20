@@ -151,5 +151,18 @@
 <script src="places-data.js"></script>
 <script src="app.js"></script>
 <script data-goatcounter="https://carlosluisduchicela.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script>
+document.addEventListener('click', function(e){
+  var a = e.target.closest ? e.target.closest('a') : null;
+  if(!a || !window.goatcounter || !goatcounter.count) return;
+  var href = a.getAttribute('href') || '';
+  var label = '';
+  if (href.indexOf('CarlosDuchicela_Resume.pdf') > -1) label = 'event:resume-download';
+  else if (href.indexOf('mailto:') === 0) label = 'event:email-click';
+  else if (href.indexOf('http') === 0) label = 'event:outbound:' + href.replace(/^https?:\/\//,'').split('/')[0];
+  else if (href.indexOf('.html') > -1) label = 'event:page-open:' + href.split('/').pop();
+  if (label) goatcounter.count({path: label, event: true});
+});
+</script>
 </body>
 </html>
